@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+
+compose() {
+  docker compose -f "$ROOT/docker-compose.yml" "$@"
+}
+
+usage() {
+  cat <<'EOF'
+Usage: bin/study <command>
+
+  up         Build the PHP 8.6 image
+  composer   composer install inside the container
+  run        Run examples A–E and measure.php
+  php        php -v inside the container
+  sh         Interactive shell
+
+Examples must not be run with the host PHP 8.5 CLI.
+EOF
+}
+
+cmd="${1:-run}"
+shift || true
+
+case "$cmd" in
+  up)
+    compose build php86
+    compose run --rm php86 php -v
+    ;;
+  composer)
+    compose run --rm php86 composer install --no-interaction
+    ;;
+  run)
+    compose run --rm php86 php examples/run-all.php
+    ;;
+  php)
+    compose run --rm php86 php -v
+    ;;
+  sh)
+    compose run --rm php86 bash
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
+esac

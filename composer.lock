@@ -4,8 +4,93 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f2d2bb175ffe409da49e7034d1f3a93",
+    "content-hash": "e93b71ca6b8a0163ae91930bba322d8b",
     "packages": [
+        {
+            "name": "darkwood/flow",
+            "version": "8.1.x-dev",
+            "dist": {
+                "type": "path",
+                "url": "../../darkwood/src/Darkwood/Component/Flow",
+                "reference": "2e2abedc71bdb4cc20e615ed4b18c5de7d7c040f"
+            },
+            "require": {
+                "php": ">=8.5",
+                "symfony/config": "^8.1",
+                "symfony/dependency-injection": "^8.1",
+                "symfony/event-dispatcher": "^8.1",
+                "symfony/http-kernel": "^8.1",
+                "symfony/string": "^8.1"
+            },
+            "require-dev": {
+                "amphp/amp": "^3.1",
+                "doctrine/dbal": "^4.3",
+                "openswoole/ide-helper": "^26.2.0",
+                "react/async": "^4.3",
+                "spatie/async": "^1.8",
+                "symfony/doctrine-messenger": "^8.1",
+                "symfony/http-client": "^8.1"
+            },
+            "suggest": {
+                "amphp/amp": "Provide asynchronous with AMP",
+                "ext-async": "Provides the experimental TrueAsync driver for Flow",
+                "ext-openswoole": "Provide asynchronous with OpenSwoole",
+                "react/async": "Provide asynchronous with ReactPHP",
+                "spatie/async": "Provide asynchronous with Spatie",
+                "symfony/messenger": "Provide Symfony Messenger support"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Flow\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Flow\\Examples\\": "examples",
+                    "Flow\\Test\\": "tests"
+                }
+            },
+            "scripts": {
+                "env": [
+                    "cd tools && castor flow:tools:env"
+                ],
+                "docs-serve": [
+                    "cd tools && castor flow:tools:docs-serve"
+                ],
+                "php-cs-fixer": [
+                    "cd tools && castor flow:tools:php-cs-fixer"
+                ],
+                "phpstan": [
+                    "cd tools && castor flow:tools:phpstan"
+                ],
+                "phpunit": [
+                    "cd tools && castor flow:tools:phpunit"
+                ],
+                "symfony-lsp": [
+                    "symfony lsp:check"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Flow",
+            "keywords": [
+                "amphp",
+                "async",
+                "fiber",
+                "monad",
+                "php",
+                "reactphp",
+                "spatie",
+                "swoole",
+                "symfony"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
         {
             "name": "psr/cache",
             "version": "3.0.0",
@@ -2595,14 +2680,16 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "darkwood/flow": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.4",
+        "php": ">=8.6",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.9.0"
 }

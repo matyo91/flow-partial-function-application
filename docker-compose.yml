@@ -1,0 +1,17 @@
+# Isolated PHP 8.6 runner. Do not use the host PHP 8.5 CLI for these examples.
+#
+# Official library tags at study time: php:8.6-rc-cli / php:8.6.0beta2-cli.
+# QA tarball is 8.6.0beta3; the Docker library may lag. Record `php -v` after start.
+
+services:
+  php86:
+    build:
+      context: .
+      dockerfile: docker/php86.Dockerfile
+    working_dir: /work/content/flow-partial-function-application
+    volumes:
+      - /Users/math/Sites/darkwood:/work
+    environment:
+      APP_ENV: dev
+      COMPOSER_ALLOW_SUPERUSER: "1"
+    command: ["php", "-v"]
